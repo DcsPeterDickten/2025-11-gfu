@@ -1,2 +1,35 @@
+@if (books.length === 0) {
+  <p>
+    Leider keine Bücher vorhanden
+  </p>
+}
+@else  {
+  <p>
+    {{ books.length}} Bücher vorhanden
+  </p>
+}
+
+<!-- table>tr*2>td*5 -->
+
 Bücherliste:
-{{ books }}
+<table border="1">
+  <tr>
+    <td>ISBN</td>
+    <td>Titel</td>
+    <td>Preis</td>
+    <td>Bewertung</td>
+    <td></td>
+  </tr>
+@for (book of books; track book.isbn; let i = $index) {
+    <tr>
+    <td>{{i+1}}: {{book.isbn}}</td>
+    <td>{{book.title}}</td>
+    <td>{{book.price}}</td>
+    <td>{{book.rating}}</td>
+    <td></td>
+  </tr>
+}
+</table>
+
+
+
