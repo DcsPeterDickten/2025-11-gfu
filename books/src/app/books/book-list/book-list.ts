@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'book-list',
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
