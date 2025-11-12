@@ -1,15 +1,16 @@
 import { CurrencyPipe, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
+import { BooksFilterPipe } from "../books-filter-pipe";
 
 @Component({
   selector: 'book-list',
-  imports: [NgClass, FormsModule, CurrencyPipe],
+  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
-export class BookList {
+export class BookList implements OnInit {
 
   breite: number = 50;
   showCover: boolean = true;
@@ -36,6 +37,14 @@ export class BookList {
       coverUrl: 'https://m.media-amazon.com/images/I/71le4bCnY1L._SY522_.jpg'
     }
   ];
+
+  constructor() {
+    console.log('BookList constructor');
+  }
+
+  ngOnInit(){
+    console.log('BookList ngOnInit');
+  }
 
   toggleCover() {
     this.showCover = !this.showCover;

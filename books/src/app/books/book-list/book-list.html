@@ -26,7 +26,7 @@ Bücherliste gefiltert nach '{{filterValue}}':
     <td>Bewertung</td>
     <td>Cover</td>
   </tr>
-@for (book of books; track book.isbn; let i = $index) {
+@for (book of (books | bookFilter:filterValue); track book.isbn; let i = $index) {
     <tr>
     <td>{{i+1}}: {{book.isbn}}</td>
     <td>{{book.title}}</td>
