@@ -1,5 +1,6 @@
 table {
-  border: 1px
+  border: 1px;
+  border-collapse: collapse
 }
 td {
   padding: 5px;
