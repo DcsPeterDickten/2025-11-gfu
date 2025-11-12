@@ -1,10 +1,10 @@
-import { NgClass } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'book-list',
-  imports: [NgClass, FormsModule],
+  imports: [NgClass, FormsModule, CurrencyPipe],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })

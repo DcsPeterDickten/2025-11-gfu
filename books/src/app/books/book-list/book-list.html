@@ -30,7 +30,9 @@ Bücherliste gefiltert nach '{{filterValue}}':
     <tr>
     <td>{{i+1}}: {{book.isbn}}</td>
     <td>{{book.title}}</td>
-    <td [ngClass]="{'on-discount': book.price < 20}">{{book.price}}</td>
+    <td [ngClass]="{'on-discount': book.price < 20}">
+      {{book.price | currency:'EUR':'symbol':'1.2-2'}}
+    </td>
     <td>{{book.rating}}</td>
     <td>
       @if (showCover) {
