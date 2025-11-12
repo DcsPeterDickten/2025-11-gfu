@@ -33,7 +33,10 @@ Bücherliste gefiltert nach '{{filterValue}}':
     <td [ngClass]="{'on-discount': book.price < 20}">
       {{book.price | currency:'EUR':'symbol':'1.2-2'}}
     </td>
-    <td>{{book.rating}}</td>
+    <td>
+      <rating/>
+      {{book.rating}}
+    </td>
     <td>
       @if (showCover) {
         <img [src]="book.coverUrl" [style.width.px]="breite" alt="Cover">

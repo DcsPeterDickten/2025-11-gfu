@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
 import { BooksFilterPipe } from "../books-filter-pipe";
+import { Rating } from "../../shared/rating/rating";
 
 @Component({
   selector: 'book-list',
-  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe],
+  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
