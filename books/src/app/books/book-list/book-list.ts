@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
 import { BooksFilterPipe } from "../books-filter-pipe";
 import { Rating } from "../../shared/rating/rating";
+import { runde, limit } from '../../shared/math.helper';
+
+
 
 @Component({
   selector: 'book-list',
@@ -63,13 +66,9 @@ export class BookList implements OnInit {
 
   changeRating(isbn: string, delta: number) {
     console.log('changeRating', isbn, delta);
-    const books = this.books.filter((book: Book) => book.isbn === isbn);
-    if (books.length > 0) {
-      const book = books[0];
-      book.rating = book.rating + delta;
-      book.rating = Math.max(book.rating, 1)
-      book.rating = Math.min(book.rating, 5);
-      book.rating = +book.rating.toFixed(1);
+    const book = this.books.find((book: Book) => book.isbn === isbn);
+    if (book) {
+      book.rating = runde(limit(book.rating + delta, 1, 5));   book.rating + delta;
     }
   }
 
