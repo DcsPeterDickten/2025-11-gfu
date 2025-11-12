@@ -1,17 +1,15 @@
-import { CurrencyPipe, JsonPipe, NgClass } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { CurrencyPipe, NgClass } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Book } from '../book';
-import { BooksFilterPipe } from "../books-filter-pipe";
+import { limit, runde } from '../../shared/math.helper';
 import { Rating } from "../../shared/rating/rating";
-import { runde, limit } from '../../shared/math.helper';
+import { Book } from '../book';
 import { BookData } from '../book-data';
-
-
+import { BooksFilterPipe } from "../books-filter-pipe";
 
 @Component({
   selector: 'book-list',
-  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating, JsonPipe],
+  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
@@ -20,18 +18,14 @@ export class BookList implements OnInit {
   breite: number = 50;
   showCover: boolean = true;
   filterValue: string = '';
-
   books: Array<Book>= [];
-
-
 
   constructor(private bookDataService: BookData) {
     console.log('BookList constructor');
   }
 
-  ngOnInit(){
-    console.log('BookList ngOnInit');
-    this.books= this.bookDataService.getBooks();
+  async ngOnInit(){
+    this.books= await this.bookDataService.getBooks();
   }
 
   toggleCover() {
