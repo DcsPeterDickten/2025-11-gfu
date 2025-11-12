@@ -5,14 +5,11 @@ import { Book } from './book';
   name: 'bookFilter'
 })
 export class BooksFilterPipe implements PipeTransform {
-
   transform(books: Book[], filterValue:string = ''): Book[] {
-
     const searchValue = filterValue.toLowerCase();
     const gefilterteBuecher =
       books.filter((book) =>
           book.title.toLowerCase().includes(searchValue));
     return gefilterteBuecher;
   }
-
 }
