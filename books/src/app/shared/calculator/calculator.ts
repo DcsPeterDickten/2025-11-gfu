@@ -13,8 +13,9 @@ export class Calculator {
   result: number = 0;
 
   add() {
-  this.result = this.x + this.y;
+    this.result = this.x + this.y;
   }
+
   subtract() {
     this.result = this.x - this.y;
   }

@@ -1,14 +1,47 @@
-<p>Calculator</p>
+<div class="calculator-container">
+  <div class="calculator-card">
+    <h2 class="calculator-title">Calculator</h2>
 
-<p>
-  <input type="number" [(ngModel)]="x" placeholder="x" />
-</p>
-<p>
-  <input type="number" [(ngModel)]="y" placeholder="y" />
-</p>
-<p>
-  <button (click)="add()">+</button>
-  <button (click)="subtract()">-</button>
-  <button (click)="clear()">[c]</button>
-</p>
-<p>Result: {{ result }}</p>
+    <div class="input-group">
+      <label for="x-input">First Number</label>
+      <input
+        id="x-input"
+        type="number"
+        [(ngModel)]="x"
+        placeholder="Enter a number"
+        class="number-input"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="y-input">Second Number</label>
+      <input
+        id="y-input"
+        type="number"
+        [(ngModel)]="y"
+        placeholder="Enter a number"
+        class="number-input"
+      />
+    </div>
+
+    <div class="button-group">
+      <button (click)="add()" class="operation-btn add-btn" aria-label="Add">
+        <span class="btn-icon">+</span>
+        <span class="btn-text">Add</span>
+      </button>
+      <button (click)="subtract()" class="operation-btn subtract-btn" aria-label="Subtract">
+        <span class="btn-icon">−</span>
+        <span class="btn-text">Subtract</span>
+      </button>
+      <button (click)="clear()" class="operation-btn clear-btn" aria-label="Clear">
+        <span class="btn-icon">C</span>
+        <span class="btn-text">Clear</span>
+      </button>
+    </div>
+
+    <div class="result-display">
+      <div class="result-label">Result</div>
+      <div class="result-value">{{ result }}</div>
+    </div>
+  </div>
+</div>
