@@ -9,9 +9,15 @@
   </p>
 }
 
-<!-- table>tr*2>td*5 -->
+<p>
+  <button (click)="toggleCover()">Cover {{showCover ? 'aus' : 'ein' }}blenden</button>
+</p>
 
-Bücherliste:
+<p>
+  <input type="text" [(ngModel)]="filterValue" placeholder="Filter">
+</p>
+
+Bücherliste gefiltert nach '{{filterValue}}':
 <table border="1">
   <tr>
     <td>ISBN</td>
@@ -24,9 +30,13 @@ Bücherliste:
     <tr>
     <td>{{i+1}}: {{book.isbn}}</td>
     <td>{{book.title}}</td>
-    <td>{{book.price}}</td>
+    <td [ngClass]="{'on-discount': book.price < 20}">{{book.price}}</td>
     <td>{{book.rating}}</td>
-    <td><img [src]="book.coverUrl" alt="Cover"></td>
+    <td>
+      @if (showCover) {
+        <img [src]="book.coverUrl" [style.width.px]="breite" alt="Cover">
+      }
+    </td>
   </tr>
 }
 </table>

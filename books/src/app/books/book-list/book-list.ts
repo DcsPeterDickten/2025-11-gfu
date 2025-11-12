@@ -1,13 +1,18 @@
-import { JsonPipe } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'book-list',
-  imports: [],
+  imports: [NgClass, FormsModule],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
 export class BookList {
+
+  breite: number = 50;
+  showCover: boolean = true;
+  filterValue: string = '';
 
   books = [
     {
@@ -30,4 +35,9 @@ export class BookList {
       coverUrl: 'https://m.media-amazon.com/images/I/71le4bCnY1L._SY522_.jpg'
     }
   ];
+
+  toggleCover() {
+    this.showCover = !this.showCover;
+  }
+
 }
