@@ -1,6 +1,7 @@
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Book } from '../book';
 
 @Component({
   selector: 'book-list',
@@ -14,7 +15,7 @@ export class BookList {
   showCover: boolean = true;
   filterValue: string = '';
 
-  books = [
+  books: Array<Book>= [
     {
       isbn: '123',
       title: 'Angular 18',
