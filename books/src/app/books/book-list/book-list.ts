@@ -1,16 +1,17 @@
-import { CurrencyPipe, NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe, JsonPipe, NgClass } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
 import { BooksFilterPipe } from "../books-filter-pipe";
 import { Rating } from "../../shared/rating/rating";
 import { runde, limit } from '../../shared/math.helper';
+import { BookData } from '../book-data';
 
 
 
 @Component({
   selector: 'book-list',
-  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating],
+  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating, JsonPipe],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
@@ -20,34 +21,17 @@ export class BookList implements OnInit {
   showCover: boolean = true;
   filterValue: string = '';
 
-  books: Array<Book>= [
-    {
-      isbn: '123',
-      title: 'Angular 18',
-      price: 19,
-      rating: 3.5,
-      coverUrl: 'https://m.media-amazon.com/images/I/71Wv+d6oP6L._AC_UY436_QL65_.jpg'
-    },     {
-      isbn: '124',
-      title: 'Angular 19',
-      price: 21,
-      rating: 4.0,
-      coverUrl: 'https://m.media-amazon.com/images/I/71wlgd2ShsL._SY522_.jpg'
-    }, {
-      isbn: '125',
-      title: 'Angular 20',
-      price: 25,
-      rating: 4.5,
-      coverUrl: 'https://m.media-amazon.com/images/I/71le4bCnY1L._SY522_.jpg'
-    }
-  ];
+  books: Array<Book>= [];
 
-  constructor() {
+
+
+  constructor(private bookDataService: BookData) {
     console.log('BookList constructor');
   }
 
   ngOnInit(){
     console.log('BookList ngOnInit');
+    this.books= this.bookDataService.getBooks();
   }
 
   toggleCover() {

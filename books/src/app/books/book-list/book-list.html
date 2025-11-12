@@ -1,3 +1,8 @@
+<p>
+  {{books | json}}
+</p>
+
+
 @if (books.length === 0) {
   <p>
     Leider keine Bücher vorhanden
@@ -40,7 +45,6 @@ Bücherliste gefiltert nach '{{filterValue}}':
         (plusWasClicked)="rateUp($event)"
         (minusWasClicked)="rateDown($event)"
       />
-      {{book.rating}}
     </td>
     <td>
       @if (showCover) {
