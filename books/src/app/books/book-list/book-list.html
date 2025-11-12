@@ -34,7 +34,12 @@ Bücherliste gefiltert nach '{{filterValue}}':
       {{book.price | currency:'EUR':'symbol':'1.2-2'}}
     </td>
     <td>
-      <rating [id]="book.isbn" [stars]="book.rating" />
+      <rating
+        [id]="book.isbn"
+        [stars]="book.rating"
+        (plusWasClicked)="rateUp($event)"
+        (minusWasClicked)="rateDown($event)"
+      />
       {{book.rating}}
     </td>
     <td>

@@ -51,4 +51,26 @@ export class BookList implements OnInit {
     this.showCover = !this.showCover;
   }
 
+  rateUp(isbn: string) {
+    console.log('rateUp', isbn);
+    this.changeRating(isbn, 0.1);
+  }
+
+  rateDown(isbn: string) {
+    console.log('rateDown', isbn);
+    this.changeRating(isbn, -0.1);
+  }
+
+  changeRating(isbn: string, delta: number) {
+    console.log('changeRating', isbn, delta);
+    const books = this.books.filter((book: Book) => book.isbn === isbn);
+    if (books.length > 0) {
+      const book = books[0];
+      book.rating = book.rating + delta;
+      book.rating = Math.max(book.rating, 1)
+      book.rating = Math.min(book.rating, 5);
+      book.rating = +book.rating.toFixed(1);
+    }
+  }
+
 }

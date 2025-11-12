@@ -28,10 +28,10 @@ export class Rating implements OnInit, OnChanges {
   }
 
   rateUp() {
-    console.log('rateUp', this.id, this.stars);
+    this.plusWasClicked.emit(this.id);
   }
   rateDown() {
-    console.log('rateDown', this.id, this.stars);
+    this.minusWasClicked.emit(this.id);
   }
 
 }
