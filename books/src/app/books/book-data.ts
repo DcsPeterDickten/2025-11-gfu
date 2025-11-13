@@ -12,5 +12,9 @@ export class BookData {
     return data;
   }
 
-
+  async getBook(isbn: string): Promise<Book> {
+    const response = await fetch(`http://localhost:3000/books/${isbn}`);
+    const data = await response.json();
+    return data;
+  }
 }

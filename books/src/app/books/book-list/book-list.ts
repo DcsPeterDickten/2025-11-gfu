@@ -1,5 +1,5 @@
 import { CurrencyPipe, NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { limit, runde } from '../../shared/math.helper';
 import { Rating } from "../../shared/rating/rating";
@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
-export class BookList implements OnInit {
+export class BookList implements OnInit, OnDestroy {
 
   breite: number = 50;
   showCover: boolean = true;
@@ -22,6 +22,10 @@ export class BookList implements OnInit {
 
   constructor(private bookDataService: BookData) {
     console.log('BookList constructor');
+  }
+
+  ngOnDestroy(): void {
+    console.log('BookList ngOnDestroy');
   }
 
   async ngOnInit(){
