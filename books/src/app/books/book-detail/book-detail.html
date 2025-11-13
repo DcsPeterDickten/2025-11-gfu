@@ -1,1 +1,14 @@
 <p>Detailseite für Buch mit ISBN {{isbn}}:</p>
+<hr>
+
+@if (book) {
+  <p>ISBN: {{book.isbn}}</p>
+  <p>Titel: {{book.title}}</p>
+  <p>Preis: {{book.price}}</p>
+  <p>Rating: {{book.rating}}</p>
+  <p>Cover: <img [src]="book.coverUrl" alt="Cover"></p>
+}
+@else {
+  <p>Buch nicht gefunden</p>
+}
+<hr>
