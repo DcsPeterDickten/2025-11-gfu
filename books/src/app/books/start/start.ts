@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, filter, map, timer } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subject, filter, map, timer } from 'rxjs';
 
 @Component({
   selector: 'book-start',
@@ -12,7 +12,7 @@ export class Start {
 
   obs3$: Observable<number> = timer(0,500);
   obs4$: Observable<number> | null = null;
-  mySubject$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  mySubject$: ReplaySubject<string> = new ReplaySubject<string>(1_000_000);
 
   constructor() {
     this.obs4$ = this.obs3$.pipe(
@@ -21,11 +21,12 @@ export class Start {
     );
 
     this.mySubject$.next('Hallo');
+    this.mySubject$.next('Welt');
 
     this.mySubject$.subscribe(
       (nachricht: string) => console.log('BehaviorSubject sagt', nachricht)
     );
 
-    this.mySubject$.next('Welt');
+    this.mySubject$.next('Ende der Welt');
   }
 }
