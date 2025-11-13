@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { Observable, timer } from 'rxjs';
+import { Observable, filter, map, timer } from 'rxjs';
 
 @Component({
   selector: 'book-start',
@@ -11,8 +11,11 @@ import { Observable, timer } from 'rxjs';
 export class Start {
 
   obs3$: Observable<number> = timer(0,500);
-
+  obs4$: Observable<number> | null = null;
   constructor() {
-    this.obs3$.subscribe(console.log);
+    this.obs4$ = this.obs3$.pipe(
+      filter((value: number) => value % 2 === 0),
+      map((value: number) => value * 10)
+    );
   }
 }
