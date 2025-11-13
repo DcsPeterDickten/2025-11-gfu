@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject, Subject, filter, map, timer } from 'rxjs';
+import { Observable, ReplaySubject, Subscription, filter, map, timer } from 'rxjs';
 
 @Component({
   selector: 'book-start',
@@ -13,6 +13,7 @@ export class Start {
   obs3$: Observable<number> = timer(0,500);
   obs4$: Observable<number> | null = null;
   mySubject$: ReplaySubject<string> = new ReplaySubject<string>(1_000_000);
+  mySubscriptions: Subscription[] = [];
 
   constructor() {
     this.obs4$ = this.obs3$.pipe(
@@ -28,5 +29,13 @@ export class Start {
     );
 
     this.mySubject$.next('Ende der Welt');
+  }
+
+  ngOnInit(): void {
+    this.mySubscriptions.push(timer(0,500).subscribe(console.log));
+  }
+
+  ngOnDestroy(): void {
+    this.mySubscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
 }
