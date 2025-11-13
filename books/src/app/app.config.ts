@@ -6,7 +6,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withDebugTracing()) // , withDebugTracing() << debugging aktivieren
+    provideRouter(routes) // , withDebugTracing() << debugging aktivieren
     // , withHashLocation() // hash-based routing
   ]
 };
