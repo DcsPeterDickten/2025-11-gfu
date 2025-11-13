@@ -29,8 +29,12 @@ Bücherliste gefiltert nach '{{filterValue}}':
   </tr>
 @for (book of (books | bookFilter:filterValue); track book.isbn; let i = $index) {
     <tr>
-    <td>{{i+1}}: {{book.isbn}}</td>
-    <td>{{book.title}}</td>
+    <td>{{book.isbn}}</td>
+    <td>
+      <a [routerLink]="['/books', book.isbn]">
+        {{book.title}}
+      </a>
+  </td>
     <td [ngClass]="{'on-discount': book.price < 20}">
       {{book.price | currency:'EUR':'symbol':'1.2-2'}}
     </td>

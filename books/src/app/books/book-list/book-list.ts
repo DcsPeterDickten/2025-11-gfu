@@ -6,9 +6,10 @@ import { Rating } from "../../shared/rating/rating";
 import { Book } from '../book';
 import { BookData } from '../book-data';
 import { BooksFilterPipe } from "../books-filter-pipe";
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating],
+  imports: [NgClass, FormsModule, CurrencyPipe, BooksFilterPipe, Rating, RouterLink],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
