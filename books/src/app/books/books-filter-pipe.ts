@@ -6,7 +6,7 @@ import { Book } from './book';
 })
 export class BooksFilterPipe implements PipeTransform {
   transform(books: Book[], filterValue:string = ''): Book[] {
-    const searchValue = filterValue.toLowerCase();
+    const searchValue = (filterValue || '').toLowerCase().trim();
     const gefilterteBuecher =
       books.filter((book) =>
           book.title.toLowerCase().includes(searchValue));

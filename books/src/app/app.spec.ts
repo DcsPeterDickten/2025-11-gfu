@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { Katze as App } from './app';
 
 describe('App', () => {
   beforeEach(async () => {
