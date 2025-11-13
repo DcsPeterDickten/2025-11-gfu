@@ -36,7 +36,7 @@ export class BookDetail implements OnInit {
     const promiseBook = this.bookDataService.getBook(this.isbn);
     promiseBook.then((book) => {
       this.book = book;
-      console.log('ngOnInit2', this.book);
+      console.log('ngOnInitOhneAsync', this.book);
     }).catch((error) => {
       console.error('Fehler beim Laden des Buches', error);
     });

@@ -17,4 +17,12 @@ export class BookData {
     const data = await response.json();
     return data;
   }
+
+  async deleteBook(isbn: string): Promise<string> {
+    const response = await fetch(`http://localhost:3000/books/${isbn}`, {method: 'DELETE'});
+    const data = await response.json();
+    return data;
+  }
+
+
 }

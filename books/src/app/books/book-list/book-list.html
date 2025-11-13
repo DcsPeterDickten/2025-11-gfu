@@ -45,6 +45,7 @@ Bücherliste gefiltert nach '{{filterValue}}':
         (plusWasClicked)="rateUp($event)"
         (minusWasClicked)="rateDown($event)"
       />
+      <button (click)="deleteBook(book.isbn)">Löschen</button>
     </td>
     <td>
       @if (showCover) {

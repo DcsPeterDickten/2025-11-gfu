@@ -54,4 +54,8 @@ export class BookList implements OnInit, OnDestroy {
     }
   }
 
+  async deleteBook(isbn: string) {
+    await this.bookDataService.deleteBook(isbn);
+    this.books= await this.bookDataService.getBooks();
+  }
 }
